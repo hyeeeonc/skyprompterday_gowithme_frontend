@@ -1,7 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import styled, { keyframes } from "styled-components";
 import { PcLogo } from "../components/Logo";
 import { BaseButton } from "../components/Button";
+
+import Chatbot from "react-chatbot-kit";
+
+import config from "../bot/config.js";
+import MessageParser from "../bot/MessageParser.js";
+import ActionProvider from "../bot/ActionProvider.js";
+
+import "react-chatbot-kit/build/main.css";
+import "./chatbot.css";
+
+import "remixicon/fonts/remixicon.css";
 
 const IndexBlock = styled.main`
   position: absolute;
@@ -141,6 +152,8 @@ const IndexMockupThird = styled.img`
 `;
 
 const IndexPage = () => {
+  const [showBot, togggleBot] = useState(false);
+
   return (
     <IndexBlock>
       <IndexLogoContainer>
@@ -153,12 +166,13 @@ const IndexPage = () => {
       </IndexTitle>
       <IndexSubTitle>서울시 지하철의 승강기 위치 정보를 물어보세요!</IndexSubTitle>
       <IndexStartButtonContainer>
-        <BaseButton>시작하기</BaseButton>
+        <BaseButton onClick={() => togggleBot((prev) => !prev)}>시작하기</BaseButton>
       </IndexStartButtonContainer>
 
       <IndexMockupFirst src="/images/imagecenter.png" />
       {/* <IndexMockupSecond src="/images/imageleft.png" />
       <IndexMockupThird src="/images/imageright.png" /> */}
+      {showBot && <Chatbot config={config} messageParser={MessageParser} actionProvider={ActionProvider} />}
     </IndexBlock>
   );
 };

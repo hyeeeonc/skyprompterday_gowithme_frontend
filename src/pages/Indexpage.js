@@ -154,6 +154,15 @@ const IndexMockupThird = styled.img`
 const IndexPage = () => {
   const [showBot, togggleBot] = useState(false);
 
+  const saveMessages = (messages, HTMLString) => {
+    localStorage.setItem("messages", JSON.stringify(messages));
+  };
+
+  const loadMessages = () => {
+    const messages = JSON.parse(localStorage.getItem("messages"));
+    return messages;
+  };
+
   return (
     <IndexBlock>
       <IndexLogoContainer>
@@ -166,13 +175,13 @@ const IndexPage = () => {
       </IndexTitle>
       <IndexSubTitle>서울시 지하철의 승강기 위치 정보를 물어보세요!</IndexSubTitle>
       <IndexStartButtonContainer>
-        <BaseButton onClick={() => togggleBot((prev) => !prev)}>시작하기</BaseButton>
+        <BaseButton onClick={() => togggleBot((prev) => !prev)}>{showBot ? <p>종료하기</p> : <p>시작하기</p>} </BaseButton>
       </IndexStartButtonContainer>
 
       <IndexMockupFirst src="/images/imagecenter.png" />
       {/* <IndexMockupSecond src="/images/imageleft.png" />
       <IndexMockupThird src="/images/imageright.png" /> */}
-      {showBot && <Chatbot config={config} messageParser={MessageParser} actionProvider={ActionProvider} />}
+      {showBot && <Chatbot toggleBot={togggleBot} saveMessages={saveMessages} messageHistory={loadMessages()} config={config} messageParser={MessageParser} actionProvider={ActionProvider} />}
     </IndexBlock>
   );
 };

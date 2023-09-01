@@ -1,26 +1,35 @@
 import styled from "styled-components";
 
 const HeaderContainer = styled.div`
-  background: rgb(92, 130, 255);
-  background: linear-gradient(90deg, rgba(157, 92, 255, 1) 0%, rgba(92, 130, 255, 1) 100%);
-  width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  padding: 1.4rem;
 
-  .ri-close-line,
-  .ri-arrow-left-s-line {
-    font-size: 1.5rem;
-    color: #ffffff;
-  }
+  background: #2a2f38;
+  width: 100%;
+
+  padding: 1.4rem 0;
 `;
 
-function Header() {
+function Header(props) {
+  console.log(props);
   return (
     <HeaderContainer>
-      <i className="ri-arrow-left-s-line" />
-      <i className="ri-close-line" />
+      <svg width="82" height="30" viewBox="0 0 82 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="6.31009" y="16.5413" width="0.864099" height="8.64099" transform="rotate(15 6.31009 16.5413)" fill="white" />
+        <rect x="16.0536" y="22.2679" width="1.03571" height="10.875" transform="rotate(90 16.0536 22.2679)" fill="white" />
+        <rect width="0.864099" height="8.64099" transform="matrix(-0.965926 0.258819 0.258819 0.965926 14.9071 16.5413)" fill="white" />
+        <rect width="21.2321" height="20.1964" rx="8" fill="white" />
+        <rect x="2.07144" y="5.17859" width="17.0893" height="8.28571" fill="#71ABFB" />
+        <rect x="5.17856" y="2.07141" width="10.3571" height="1.03571" rx="0.517857" fill="#71ABFB" />
+        <circle cx="5.4375" cy="16.8304" r="1.8125" fill="#71ABFB" />
+        <circle cx="15.7946" cy="16.8304" r="1.8125" fill="#71ABFB" />
+        <path
+          d="M37 23.355H35.38C34.915 23.355 34.585 23.13 34.585 22.65V9.375H36.235C36.655 9.375 37 9.51 37 10.005V14.055H39.01V16.11H37V23.355ZM33.13 11.01C33.07 15.735 30.43 19.065 26.545 20.97L25.51 19.875C25.135 19.5 25.315 19.245 25.66 19.065C28.69 17.445 30.4 15.09 30.625 12.18H25.915V10.125H32.155C32.755 10.125 33.13 10.5 33.13 11.01ZM52.0165 23.355H50.3965C49.9315 23.355 49.6015 23.13 49.6015 22.65V9.375H51.2515C51.6715 9.375 52.0165 9.51 52.0165 10.005V23.355ZM49.0165 20.145L47.9665 21.09C47.0665 20.67 45.6265 19.65 44.5465 18.33C43.4665 19.725 41.9965 20.715 41.1415 21.12L40.1065 20.13C39.8215 19.86 39.8515 19.545 40.1965 19.335C41.5315 18.57 43.3315 16.95 43.3315 14.7V13.365H41.2615C40.8415 13.365 40.5265 13.08 40.5265 12.645V11.28H43.3315V9.315H44.8915C45.3865 9.315 45.7465 9.39 45.7465 10.02V11.28H48.5065V13.365H45.7465V14.7C45.7465 16.92 47.6815 18.57 48.9415 19.335C49.4515 19.635 49.2715 19.905 49.0165 20.145ZM65.5205 23.355H63.9005C63.4355 23.355 63.1055 23.13 63.1055 22.65V9.375H64.7555C65.1755 9.375 65.5205 9.51 65.5205 10.005V14.055H67.5305V16.11H65.5205V23.355ZM61.6505 11.01C61.5905 15.735 58.9505 19.065 55.0655 20.97L54.0305 19.875C53.6555 19.5 53.8355 19.245 54.1805 19.065C57.2105 17.445 58.9205 15.09 59.1455 12.18H54.4355V10.125H60.6755C61.2755 10.125 61.6505 10.5 61.6505 11.01Z"
+          fill="white"
+        />
+        <path d="M1 29H72.0583L80 15.3434L72.0583 3H41.658" stroke="white" stroke-width="2" stroke-linecap="round" />
+      </svg>
     </HeaderContainer>
   );
 }

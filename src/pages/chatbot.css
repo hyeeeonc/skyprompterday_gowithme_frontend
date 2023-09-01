@@ -13,7 +13,7 @@
 
 .react-chatbot-kit-chat-inner-container {
   height: 100%;
-  background-color: #f8f9fa;
+  background-color: #2a2f38;
 }
 
 .react-chatbot-kit-chat-input-container {
@@ -54,11 +54,14 @@
 }
 
 .react-chatbot-kit-chat-btn-send {
-  width: fit-content;
-  height: fit-content;
-  border-radius: 10px;
+  width: content-fit;
+  height: 100%;
+  /* border-radius: 10px; */
+  border-left: 2px solid black;
   padding: 0.8rem;
-  background-color: transparent;
+  background-color: #2a2f38;
+  border-radius: 0 0 25px 0;
+  /* background-color: transparent; */
 }
 
 .react-chatbot-kit-chat-bot-message-container {

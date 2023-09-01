@@ -9,20 +9,20 @@ const ChatMessageContainer = styled.div`
   font-size: 0.97rem;
   line-height: 1.3rem;
   word-break: keep-all;
+  font-size: 14px;
 `;
 
 const ChatMessageBot = styled(ChatMessageContainer)`
-  background-color: #f2f2f2;
-  border-radius: 20px 20px 20px 5px;
+  background: #cbe0ff;
+  border-radius: 5px 5px 5px 0px;
   color: #3d4f6e;
   padding: 0.8rem 1.2rem;
   font-weight: 500;
 `;
 
 const ChatMessageUser = styled(ChatMessageContainer)`
-  background-color: #5c82ff;
-  border-radius: 20px 20px 5px 20px;
-  color: #ffffff;
+  background: #ffce51;
+  border-radius: 5px 5px 0px 5px;
   padding: 0.7rem 1.1rem;
   font-weight: 400;
 `;

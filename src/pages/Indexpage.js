@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled, { keyframes } from "styled-components";
 import { PcLogo } from "../components/Logo";
 import { BaseButton } from "../components/Button";
+import { useMediaQuery } from "react-responsive";
 
 import Chatbot from "react-chatbot-kit";
 
@@ -36,10 +37,26 @@ const slideUp = keyframes`
   }
 `;
 
+const mockupSlideUp = keyframes`
+  0% {
+    transform: rotate(-45deg) translateY(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: rotate(-45deg) translateY(0);
+    opacity: 1;
+  }
+`;
+
 const IndexLogoContainer = styled.div`
   position: absolute;
   top: 41px;
   left: 54px;
+
+  @media (max-width: 768px) {
+    top: 20px;
+    left: 20px;
+  }
 `;
 
 const IndexTitle = styled.div`
@@ -57,12 +74,17 @@ const IndexTitle = styled.div`
   font-weight: 800;
   line-height: normal;
 
-  /* 초기 스타일 */
   transform: translateY(100%);
   opacity: 0;
 
-  /* 애니메이션 적용 */
   animation: ${slideUp} 0.5s ease-out 0.5s forwards;
+
+  @media (max-width: 768px) {
+    top: 120px;
+    left: 20px;
+    width: 300px;
+    font-size: 30px;
+  }
 `;
 
 const IndexSubTitle = styled.div`
@@ -80,12 +102,14 @@ const IndexSubTitle = styled.div`
   font-weight: 400;
   line-height: normal;
 
-  /* 초기 스타일 */
   transform: translateY(100%);
   opacity: 0;
 
-  /* 애니메이션 적용 */
   animation: ${slideUp} 0.5s ease-out 0.5s forwards;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const IndexStartButtonContainer = styled.div`
@@ -95,63 +119,49 @@ const IndexStartButtonContainer = styled.div`
 
   font-weight: bold;
 
-  /* 초기 스타일 */
   transform: translateY(100%);
   opacity: 0;
 
-  /* 애니메이션 적용 */
   animation: ${slideUp} 1s ease-out 1s forwards;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
-const IndexMockupFirst = styled.img`
-  position: absolute;
-  top: 20%;
-  right: 5%;
+const IndexMockupContainer = styled.div`
+  position: fixed;
+  right: 0;
+  bottom: 10vh;
 
-  width: 500px;
-  height: auto;
+  display: flex;
+  justify-content: space-between;
 
-  /* 초기 스타일 */
-  transform: translateY(100%);
+  width: 700px;
+
+  transform: rotate(-45deg) translateY(100%);
   opacity: 0;
 
-  /* 애니메이션 적용 */
-  animation: ${slideUp} 0.9s ease-out 0.9s forwards;
+  animation: ${mockupSlideUp} 0.9s ease-out 0.9s forwards;
+
+  @media (max-width: 1150px) {
+    display: none;
+  }
 `;
 
-const IndexMockupSecond = styled.img`
-  position: absolute;
-  top: calc(20% + 100px);
-  right: calc10% - 300px);
-
-  width: 600px;
-  height: auto;
-
-  /* 초기 스타일 */
-  transform: translateY(100%);
-  opacity: 0;
-
-  /* 애니메이션 적용 */
-  animation: ${slideUp} 1s ease-out 1s forwards;
-`;
-
-const IndexMockupThird = styled.img`
-  position: absolute;
-  top: calc(30% + 100px);
-  right: calc10% - 300px);
-
-  width: 600px;
-  height: auto;
-
-  /* 초기 스타일 */
-  transform: translateY(10px);
-  opacity: 0;
-
-  /* 애니메이션 적용 */
-  animation: ${slideUp} 1.1s ease-out 1.1s forwards;
+const IndexMockupImage = styled.img`
+  width: 218px;
+  height: 440px;
 `;
 
 const IndexPage = () => {
+  const isDesktop = useMediaQuery({
+    query: "(min-width:768px)",
+  });
+  const isMobile = useMediaQuery({
+    query: "(max-width:767px)",
+  });
+
   const [showBot, togggleBot] = useState(false);
 
   const saveMessages = (messages, HTMLString) => {
@@ -163,9 +173,20 @@ const IndexPage = () => {
     return messages;
   };
 
+  const validator = (input) => {
+    if (input.length >= 1) return true;
+    alert("질문을 입력해 주세요");
+    return false;
+  };
+
   return (
     <IndexBlock>
-      <IndexMockupFirst src="/images/imagecenter.png" />
+      <IndexMockupContainer>
+        <IndexMockupImage style={{ marginTop: 120 }} src="/images/home.png" />
+        <IndexMockupImage src="/images/chat.png" />
+        <IndexMockupImage style={{ marginTop: 140 }} src="/images/landing.png" />
+      </IndexMockupContainer>
+      {/* <IndexMockupFirst src="/images/imagecenter.png" /> */}
       <IndexLogoContainer>
         <PcLogo />
       </IndexLogoContainer>
@@ -181,17 +202,19 @@ const IndexPage = () => {
 
       {/* <IndexMockupSecond src="/images/imageleft.png" />
       <IndexMockupThird src="/images/imageright.png" /> */}
-      {showBot && (
-        <Chatbot
-          placeholderText="질문을 입력하세요."
-          toggleBot={togggleBot}
-          saveMessages={saveMessages}
-          messageHistory={loadMessages()}
-          config={config}
-          messageParser={MessageParser}
-          actionProvider={ActionProvider}
-        />
-      )}
+      {showBot ||
+        (isMobile && (
+          <Chatbot
+            validator={validator}
+            placeholderText="질문을 입력하세요."
+            toggleBot={togggleBot}
+            saveMessages={saveMessages}
+            messageHistory={loadMessages()}
+            config={config}
+            messageParser={MessageParser}
+            actionProvider={ActionProvider}
+          />
+        ))}
     </IndexBlock>
   );
 };

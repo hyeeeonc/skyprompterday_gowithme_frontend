@@ -4,6 +4,7 @@ import Header from "../components/ChatbotHeader";
 
 import ChatMessage from "../components/ChatMessage";
 import ChatbotAvator from "../components/ChatbotAvator";
+import { BotMessage } from "../components/ChatMessage";
 
 const config = {
   initialMessages: [createChatBotMessage("안녕하세요. 무엇을 도와드릴까요?")],
@@ -14,7 +15,7 @@ const config = {
     // Replaces the default bot avatar
     botAvatar: (props) => <ChatbotAvator {...props} />,
     // Replaces the default bot chat message container
-    botChatMessage: (props) => <ChatMessage {...props} bot />,
+    botChatMessage: (props) => <BotMessage {...props} bot />,
     // Replaces the default user icon
     userAvatar: (props) => <div {...props} />,
     // Replaces the default user chat message

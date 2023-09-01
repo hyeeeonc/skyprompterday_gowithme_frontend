@@ -165,6 +165,7 @@ const IndexPage = () => {
 
   return (
     <IndexBlock>
+      <IndexMockupFirst src="/images/imagecenter.png" />
       <IndexLogoContainer>
         <PcLogo />
       </IndexLogoContainer>
@@ -178,10 +179,19 @@ const IndexPage = () => {
         <BaseButton onClick={() => togggleBot((prev) => !prev)}>{showBot ? <p>종료하기</p> : <p>시작하기</p>} </BaseButton>
       </IndexStartButtonContainer>
 
-      <IndexMockupFirst src="/images/imagecenter.png" />
       {/* <IndexMockupSecond src="/images/imageleft.png" />
       <IndexMockupThird src="/images/imageright.png" /> */}
-      {showBot && <Chatbot toggleBot={togggleBot} saveMessages={saveMessages} messageHistory={loadMessages()} config={config} messageParser={MessageParser} actionProvider={ActionProvider} />}
+      {showBot && (
+        <Chatbot
+          placeholderText="질문을 입력하세요."
+          toggleBot={togggleBot}
+          saveMessages={saveMessages}
+          messageHistory={loadMessages()}
+          config={config}
+          messageParser={MessageParser}
+          actionProvider={ActionProvider}
+        />
+      )}
     </IndexBlock>
   );
 };

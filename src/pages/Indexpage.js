@@ -202,19 +202,18 @@ const IndexPage = () => {
 
       {/* <IndexMockupSecond src="/images/imageleft.png" />
       <IndexMockupThird src="/images/imageright.png" /> */}
-      {showBot ||
-        (isMobile && (
-          <Chatbot
-            validator={validator}
-            placeholderText="질문을 입력하세요."
-            toggleBot={togggleBot}
-            saveMessages={saveMessages}
-            messageHistory={loadMessages()}
-            config={config}
-            messageParser={MessageParser}
-            actionProvider={ActionProvider}
-          />
-        ))}
+      {(showBot || isMobile) && (
+        <Chatbot
+          validator={validator}
+          placeholderText="질문을 입력하세요."
+          toggleBot={togggleBot}
+          saveMessages={saveMessages}
+          messageHistory={loadMessages()}
+          config={config}
+          messageParser={MessageParser}
+          actionProvider={ActionProvider}
+        />
+      )}
     </IndexBlock>
   );
 };

@@ -182,9 +182,9 @@ const IndexPage = () => {
   return (
     <IndexBlock>
       <IndexMockupContainer>
-        <IndexMockupImage style={{ marginTop: 120 }} src="/images/home.png" />
-        <IndexMockupImage src="/images/chat.png" />
-        <IndexMockupImage style={{ marginTop: 140 }} src="/images/landing.png" />
+        <IndexMockupImage style={{ marginTop: 120 }} src="images/home.png" />
+        <IndexMockupImage src="images/chat.png" />
+        <IndexMockupImage style={{ marginTop: 140 }} src="images/landing.png" />
       </IndexMockupContainer>
       {/* <IndexMockupFirst src="/images/imagecenter.png" /> */}
       <IndexLogoContainer>

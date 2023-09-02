@@ -21,7 +21,7 @@ const ChatbotAvatorImg = styled.img`
 const ChatbotAvator = () => {
   return (
     <ChatbotAvatorContainer>
-      <ChatbotAvatorImg src="/images/avator.png" />
+      <ChatbotAvatorImg src="images/avator.png" />
     </ChatbotAvatorContainer>
   );
 };

@@ -1,6 +1,3 @@
-import React from "react";
-import { createChatBotMessage } from "react-chatbot-kit";
-
 class MessageParser {
   constructor(actionProvider, state) {
     this.actionProvider = actionProvider;
